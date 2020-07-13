@@ -1,0 +1,152 @@
+<div class="row align-items-center mb-4">
+  <div class="col-12">
+    <h1 class="display-3 mb-0">Novo Usuário</h1>
+  </div>
+</div>
+
+<div class="card blue mb-2">
+  <div class="card-header blue">
+    <h5 class="my-0 display-4">Formulário de cadastro</h5>
+  </div>
+  <form [formGroup]="form">
+    <div class="card-body">
+      <div class="row">
+        <div class="form-group col-md-3 col-12">
+          <label for="nome"><strong>Nome completo</strong><span class="text-danger ml-1">*</span></label>
+          <input type="text" class="form-control form-control-lg" formControlName="nome"
+                 [ngClass]="applyCssError('nome')" id="nome">
+          <small class="form-text text-danger" *ngIf="verifyInvalidAndTouched('nome')">Este campo não é válido</small>
+        </div>
+        <div class="form-group col-md-3 col-12">
+          <label for="dataNascimento"><strong>Data de nascimento</strong><span class="text-danger ml-1">*</span></label>
+          <input type="date" class="form-control form-control-lg" formControlName="dataNascimento"
+                 [ngClass]="applyCssError('dataNascimento')" id="dataNascimento">
+          <small class="form-text text-danger" *ngIf="verifyInvalidAndTouched('dataNascimento')">Este campo não é válido</small>
+        </div> 
+        <div class="form-group col-md-3 col-12">
+          <label for="email"><strong>E-mail</strong></label>
+          <input type="email" class="form-control form-control-lg" formControlName="email"
+                 [ngClass]="applyCssError('email')" id="email">
+          <small class="form-text text-danger" *ngIf="verifyInvalidAndTouched('email')">Este campo não é válido</small>
+        </div>
+        <div class="form-group col-md-3 col-12">
+          <label for="sexo"><strong>sexo</strong><span class="text-danger ml-1">*</span></label>
+          <select class="form-control form-control-lg" formControlName="sexo"
+                  [ngClass]="applyCssError('sexo')" id="sexo">
+            <option>Selecionar</option>
+            <option value={{1}}> Masculino </option>
+            <option value={{2}}> Feminino </option>
+          </select>
+          <small class="form-text text-danger" *ngIf="verifyInvalidAndTouched('sexo')">
+            Este campo não é
+            válido
+          </small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="card grey-form mb-2">
+            <div class="card-body p-0">
+              <ng-container *ngIf="gridHabilidadesSelecionados && gridHabilidadesSelecionados.length > 0">
+                <div class="row">
+                  <div class="col-12">
+                    <div style="padding: 0.75rem;">
+                      <label><small>Procurar por:</small></label>
+                      <input type="text" class="form-control" placeholder="Ex. Marketing"
+                        [(ngModel)]="searchTextHabilidadesSelecionados" [ngModelOptions]="{ standalone: true }">
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <div class="row">
+                <div class="col-12">
+                  <label class="mb-0" style="padding: 0.75rem;"><strong>Habilidades Selecionados</strong></label>
+                </div>
+              </div>
+              <ng-container
+                *ngIf="gridHabilidadesSelecionados && gridHabilidadesSelecionados.length > 0;else notSelectedRoleSet">
+                <table class="table table-striped table-hover mb-0">
+                  <tbody>
+                    <ng-container
+                      *ngFor="let item of gridHabilidadesSelecionados | gridFilter : searchTextHabilidadesSelecionados : false;index as i">
+                      <tr>
+                        <td>
+                          <div class="form-group form-check mb-0">
+                            <input type="checkbox" class="form-check-input" [id]="'checkedRoleSet_' + i"
+                              (click)="habilidadesSelecionadosCheckEvent($event, i)">
+                            <label class="form-check-label w-100" [for]="'checkedRoleSet_' + i">{{ item?.nome }}</label>
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </ng-container>
+              <ng-template #notSelectedRoleSet>
+                <p class="mb-0" style="padding: 0.75rem;">Nenhum item selecionado</p>
+              </ng-template>
+            </div>
+            <ng-container *ngIf="gridHabilidadesSelecionados && gridHabilidadesSelecionados.length > 0">
+              <div class="card-footer text-right w-100">
+                <button type="button" class="btn btn-primary" (click)="habilidadesRemoveEvent()">Remover</button>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="card grey-form mb-2">
+            <div class="card-body p-0">
+              <ng-container *ngIf="gridHabilidades && gridHabilidades.length > 0">
+                <div class="row">
+                  <div class="col-12">
+                    <div style="padding: 0.75rem;">
+                      <label><small>Procurar por:</small></label>
+                      <input type="text" class="form-control" placeholder="Ex. Marketing"
+                        [(ngModel)]="searchTextHabilidades" [ngModelOptions]="{ standalone: true }">
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <div class="row">
+                <div class="col-12">
+                  <label class="mb-0" style="padding: 0.75rem;"><strong>Habilidades</strong></label>
+                </div>
+              </div>
+              <ng-container *ngIf="gridHabilidades && gridHabilidades.length > 0;else notRoleSet">
+                <table class="table table-striped table-hover mb-0">
+                  <tbody>
+                    <ng-container
+                      *ngFor="let item of gridHabilidades | gridFilter : searchTextHabilidades : false;index as i">
+                      <tr>
+                        <td>
+                          <div class="form-group form-check mb-0">
+                            <input type="checkbox" class="form-check-input" [id]="'checkRoleSet_' + i"
+                              (click)="habilidadesCheckEvent($event, i)">
+                            <label class="form-check-label w-100" [for]="'checkRoleSet_' + i">{{ item?.nome }}</label>
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </ng-container>
+              <ng-template #notRoleSet>
+                <p class="mb-0" style="padding: 0.75rem;">Nenhum item encontrado</p>
+              </ng-template>
+            </div>
+            <ng-container *ngIf="gridHabilidades && gridHabilidades.length > 0">
+              <div class="card-footer text-right w-100">
+                <button type="button" class="btn btn-primary" (click)="habilidadesAddEvent()">Adicionar</button>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer blue text-right w-100">
+      <a class="btn btn-outline-primary btn-lg btn-text-lg"
+        [routerLink]="['/painel/gestao-funcionarios/funcionarios']">Cancelar</a>
+      <button type="button" class="btn btn-primary btn-lg btn-text-lg ml-2" (click)="onSubmit()">Editar</button>
+    </div>
+  </form>
+</div>

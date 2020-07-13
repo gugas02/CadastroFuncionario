@@ -1,0 +1,247 @@
+.btn {
+  border-radius: 19px;
+  padding: 0.375rem 1.25rem;
+  &:focus,
+  &.focus {
+    box-shadow: none;
+  }
+}
+
+.btn-primary {
+  background-color: #2f80ed;
+  border-color: #2f80ed;
+  &:hover,
+  &:focus {
+    background-color: darken(#2f80ed, 10%);
+    border-color: darken(#2f80ed, 10%);
+  }
+}
+
+.btn-white {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #2f80ed;
+  &:hover,
+  &:focus {
+    background-color: #2f80ed;
+    border-color: #2f80ed;
+    color: #ffffff;
+  }
+}
+
+.btn-outline-primary {
+  color: #2f80ed;
+  border-color: #2f80ed;
+  &:hover,
+  &:focus {
+    background-color: #2f80ed;
+    color: #ffffff;
+    border-color: #2f80ed;
+  }
+}
+
+.btn-outline-dark-blue {
+  color: #0b3a7a;
+  border-color: #0b3a7a;
+  &:hover,
+  &:focus {
+    background-color: #0b3a7a;
+    color: #ffffff;
+    border-color: #0b3a7a;
+  }
+}
+
+.btn-disable {
+  background-color: #bdbdbd;
+  border-color: #bdbdbd;
+  color: #ffffff;
+  cursor: unset;
+  &:hover,
+  &:focus {
+    background-color: #bdbdbd;
+    border-color: #bdbdbd;
+    color: #ffffff;
+  }
+}
+
+.btn-outline-password,
+.btn-outline-search {
+  border-color: #bdbdbd !important;
+  border-left-color: transparent !important;
+  border-top-right-radius: 0.3rem !important;
+  border-bottom-right-radius: 0.3rem !important;
+}
+
+.btn-lg,
+.btn-group-lg > .btn {
+  padding: 0.563rem 2.05rem;
+  border-radius: 25px;
+}
+
+.btn-sm,
+.btn-group-sm > .btn {
+  padding: 0.219rem 0.5rem;
+  border-radius: 15px;
+}
+
+.btn-text-lg {
+  font-size: 1rem;
+  padding-top: 0.688rem;
+  padding-bottom: 0.688rem;
+}
+
+.btn-px-3 {
+  padding-right: 1.2999rem;
+  padding-left: 1.2999rem;
+}
+
+.btn-px-4 {
+  padding-right: 1.95rem;
+  padding-left: 1.95rem;
+}
+
+.btn-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  .from {
+  }
+  small {
+    font-size: 0.75rem;
+  }
+  &.related {
+    font-size: 1rem;
+    line-height: 1.2;
+    padding: 0.86rem 1.1rem;
+    border-radius: 34px;
+    .from {
+      display: block;
+    }
+  }
+}
+
+.btn-social-login {
+  display: inline-flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  transition: background-color 300ms ease-in-out;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+  &.facebook {
+    background-color: #344d91;
+    &:hover,
+    &:focus {
+      background-color: darken(#344d91, 10%);
+    }
+  }
+  &.twitter {
+    background-color: #2295ed;
+    &:hover,
+    &:focus {
+      background-color: darken(#2295ed, 10%);
+    }
+    font-size: 1.4rem;
+  }
+  &.google-plus {
+    background-color: #da3c1c;
+    &:hover,
+    &:focus {
+      background-color: darken(#da3c1c, 10%);
+    }
+  }
+  [class^="icon-social-login-"],
+  [class*=" icon-social-login-"] {
+    color: #ffffff;
+  }
+}
+
+.border-bottom-link {
+  border-bottom: 1px solid #2f80ed;
+  transition: border-bottom-color 300ms ease-in-out;
+  font-weight: normal;
+  &.dotted {
+    border-bottom-style: dotted;
+  }
+  &.dashed {
+    border-bottom-style: dashed;
+  }
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    border-bottom-color: transparent;
+  }
+}
+
+.btn-newsletter {
+  padding: 0.75rem 1.6084rem;
+  font-size: 1rem;
+}
+
+.btn-rounded-o {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.25rem;
+  border-color: #bdbdbd;
+  background-color: transparent;
+  font-size: 0.875rem;
+  padding: 0.782rem 1rem;
+  text-align: left;
+  position: relative;
+  [class^="icon-"],
+  [class*=" icon-"] {
+    font-size: 1.375rem;
+    color: #2f80ed;
+    position: absolute;
+    top: 50%;
+    right: 0.8rem;
+    transform: translateY(-50%);
+  }
+}
+
+.btn-link {
+  color: #2f80ed;
+  &:hover,
+  &:focus {
+    color: darken(#2f80ed, 10%);
+    color: darken(#2f80ed, 10%);
+  }
+
+  &.link-color-grey {
+    color: #4f4f4f;
+  }
+}
+
+.link-content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  li {
+    display: inline-flex;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #c4c4c4;
+    cursor: pointer;
+    &:not(:first-child) {
+      margin-left: 0.625rem;
+    }
+    &.active {
+      background-color: #0b3a7a;
+    }
+  }
+}
+
+.btn-actions {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}

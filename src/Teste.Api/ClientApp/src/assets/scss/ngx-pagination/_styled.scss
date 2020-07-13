@@ -1,0 +1,54 @@
+.ngx-pagination {
+  padding-left: 0;
+  li {
+    &.current {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #2f80ed;
+      color: #ffffff;
+      padding: 0.4875rem 0.625rem;
+    }
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      padding: 0.4875rem 0.625rem;
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        outline: 0;
+        border: 0;
+      }
+    }
+    span {
+      line-height: 1.1;
+    }
+  }
+  .pagination-next {
+    a,
+    &.disabled {
+      padding-right: 0;
+      padding-left: 0;
+      width: auto;
+      &::after {
+      }
+    }
+  }
+  .pagination-previous {
+    a,
+    &.disabled {
+      padding-right: 0;
+      padding-left: 0;
+      width: auto;
+      &::before {
+      }
+    }
+  }
+}

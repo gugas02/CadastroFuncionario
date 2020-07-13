@@ -1,0 +1,96 @@
+<div class="row align-items-center mb-4">
+  <div class="col-6">
+    <h1 class="display-3 mb-0">Gestor de Funcionários</h1>
+  </div>
+  <div class="col-6">
+    <div class="d-table ml-auto">
+      <a class="btn btn-primary btn-lg btn-text-lg" [routerLink]="['/painel/gestao-funcionarios/funcionarios/cadastrar']">Inserir Funcionário</a>
+    </div>
+  </div>
+</div>
+
+<div class="card blue mb-2">
+  <div class="card-header blue">
+    <h5 class="my-0 display-4">Funcionários</h5>
+  </div>
+  <div class="p-0">
+    <div class="row">
+      <div class="col-5 offset-7">
+        <div class="p-3">
+          <input type="text" class="form-control" placeholder="Pesquise..." [(ngModel)]="searchText" (input)="searchControl($event.target.value)">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body card-body-overflow p-0">
+    <ng-container *ngIf="pagination.data && pagination.data.length > 0;else notUser">
+      <!-- <div class="row">
+        <div class="col-5 offset-7">
+          <div class="p-3">
+            <input type="text" class="form-control" placeholder="Pesquise..." [(ngModel)]="searchText" (input)="searchControl($event.target.value)">
+          </div>
+        </div>
+      </div> -->
+      <table class="table table-striped blue mb-0">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+            <th>Idade</th>
+            <th>Email</th>
+            <th>Sexo</th>
+            <th>Habilidades</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container
+            *ngFor="let item of  pagination.data | gridFilter : searchText : false | paginate: { itemsPerPage: itemsPerPage, currentPage: pagination.pageIndex, totalItems: pagination.count, id: 'gridPedidos' };index as i">
+            <tr>
+              <td>{{item?.fullName}}</td>
+              <td>{{item?.birthDate  | date : 'dd/MM/yyyy'}}</td>
+              <td>{{item?.age}}</td>
+              <td>{{item?.email ? item?.email : "N/Cadastrado" }}</td>
+              <td>{{item?.gender}}</td>
+              <td>{{normalizarHabilidades(item?.skills)}}</td>
+              <td>
+                <div class="dropleft">
+                  <button class="btn btn-primary btn-actions btn-sm ml-2" type="button" id="dropdownMenu2"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fa fa-ellipsis-v"></span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenu2"> 
+                    <button class="dropdown-item" type="button" [routerLink]="['/painel/gestao-funcionarios/funcionarios//editar', item?.id]"><span><i class="fa fa-pencil-square-o"></i>
+                        Editar</span></button> 
+                    <button class="dropdown-item" type="button" (click)="inativarModal(item?.id)"><span><i class="fa fa-trash"></i>
+                        Inativar</span></button> 
+                  </div>
+                </div> 
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-template #notUser>
+      <div class="p-3">
+        <p class="mb-0">Funcionários não encontrados</p>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="d-table ml-auto">
+      <pagination-controls id="gridPedidos" previousLabel="" nextLabel="" autoHide="true"
+        (pageChange)="pagination.load($event)">
+      </pagination-controls>
+    </div>
+  </div>
+<!-- 
+  <app-atribuir-proposta [rentalId]="123456" #modalAtribuirProposta></app-atribuir-proposta> -->
+
+</div>
+
+<filter-gestor (itemsFilter)="getDataFilter($event)"></filter-gestor>

@@ -1,0 +1,30 @@
+.table {
+  color: #535353;
+  th,
+  td {
+    vertical-align: middle;
+  }
+  thead {
+    th {
+      border-top: none;
+    }
+  }
+  &.blue {
+    th,
+    td {
+      border-color: rgba(47, 128, 237, 0.5);
+    }
+  }
+}
+
+.table-striped {
+  &.blue {
+    tbody {
+      tr {
+        &:nth-of-type(odd) {
+          background-color: rgba(47, 128, 237, 0.03);
+        }
+      }
+    }
+  }
+}

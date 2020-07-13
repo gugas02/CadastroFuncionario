@@ -1,0 +1,69 @@
+<section class="filter-gestor">
+    <div class="filter-gestor__open" (click)="openFilter()">
+        <img src="../../../../../../../assets/images/filter.svg" width="100%" alt="filter.svg">
+    </div>
+
+    <div class="filter-gestor__close">
+        <img src="../../../../../../../assets/images/arrow-down.svg" alt="arrow-down.svg"
+            class="filter-gestor__close-img" (click)="closeFilter()">
+    </div>
+
+    <form [formGroup]="form" role="form">
+        <div class="form-group mb-0">
+            <mat-form-field class="select-wrapper mb-2">
+                <label for="nome" class="mt-2">Nome do cliente:</label>
+                <input type="text" aria-label="Number" matInput formControlName="nome" [matAutocomplete]="auto"
+                    class="form-control form-control-lg mb-2">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <label for="idade">Idade:</label>
+            <input type="number" class="form-control form-control-lg mb-2" id="idade" formControlName="idade"
+                aria-describedby="idade">
+            <small id="idade" class="invalid-feedback">*Idade inválida</small>
+
+
+            <div class="select-wrapper mb-2">
+                <label for="sexo">Sexo</label>
+                <select class="form-control form-control-lg" formControlName="sexo" id="sexo">
+                    <option value={{null}}>Ambos</option>
+                    <option value={{1}}> Masculino </option>
+                    <option value={{2}}> Feminino </option>
+                </select>
+            </div>
+
+            <label *ngIf="habilidadesFiltro.length != 0" class="font-weight-label mb-label">Habilidade
+                Filtradas</label>
+            <table *ngIf="habilidadesFiltro.length != 0" class="table table-striped table-dashboard table-payments"
+                style="font-size: 14px;margin: 10px 0;">
+                <tbody>
+                    <tr *ngFor="let item of habilidadesFiltro">
+                        <td width="90%">{{item?.nome}}</td>
+                        <td>
+                            <a (click)="deleteHabilidadeDoFiltro(item)">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="select-wrapper mb-2">
+                <label for="habilidade">Selecione Habilidade</label>
+                <select class="form-control form-control-lg" formControlName="habilidade" id="habilidade">
+                    <option>Selecionar</option>
+                    <option *ngFor="let item of habilidades" value={{item?.id}}> {{item?.nome}} </option>
+                </select>
+            </div>
+            <button class="btn btn-primary w-100 mb-40" (click)="addHabilidadeNoFiltro()">Adicionar Habilidade</button>
+
+
+            <button class="btn btn-primary w-100 mb-0" (click)="onSubmit()">Filtrar</button>
+            <a href="javascript:void(0)" class="filter-gestor__reset" (click)="resetFilter()">Limpar filtro</a>
+        </div>
+    </form>
+</section>

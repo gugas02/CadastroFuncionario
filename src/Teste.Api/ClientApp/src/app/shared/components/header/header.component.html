@@ -1,0 +1,11 @@
+<nav id="nav-header" class="navbar navbar-secondary bg-secondary">
+  <button class="navbar-toggler" type="button" id="menu-toggle">
+    <i class="icon-menu-burger"></i>
+  </button>
+  <span class="navbar-text ml-auto" *ngIf="displayDesktop;else displayMobile">
+    Seja-bem vindo!
+  </span>
+  <ng-template #displayMobile>
+    <span class="navbar-text ml-auto">Seja-bem vindo!</span>
+  </ng-template>
+</nav>

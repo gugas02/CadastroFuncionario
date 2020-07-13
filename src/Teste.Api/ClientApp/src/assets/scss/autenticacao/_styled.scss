@@ -1,0 +1,26 @@
+.wrapper-autenticacao {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  @media only screen and (max-width: 767px) {
+    padding-top: 4rem;
+  }
+}
+
+.wrapper-login {
+  &.blue {
+    color: #0b3a7a;
+    a {
+      color: #0b3a7a;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+  &.white {
+    color: #ffffff;
+  }
+  &.size-5 {
+    font-size: 5rem;
+  }
+}
