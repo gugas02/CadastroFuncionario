@@ -11,14 +11,12 @@ Cadastro/Edição dos Funcionários</br>
 --> Sexo (obrigatório)</br>
 --> Habilidades (C#, Java, Angular, SQL, ASP) (obrigatório)</br>
 </br>
-</br>
 Relatório </br>
 --> Filtro por: Idade, Sexo, Habilidades, Nome </br>
 --> Colunas: Nome, Data Nascimento, Idade, Email, Sexo, Habilidades, Opção para Ativar / Desativar </br>
 --> Paginação </br>
 </br>
-</br>
-Tecnologias a serem utilizadas:</br>
+Tecnologias utilizadas:</br>
 </br>
 WEB API C#</br>
 Dapper</br>
